@@ -9,12 +9,7 @@
             <span class="menu-item-label">Dashboard</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
-        <li class="br-menu-item">
-          <a href="<?= base_url('anggota') ?>" class="br-menu-link <?= (($this->uri->segment(1) == 'anggota' ? 'active' : ''))?>">
-            <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
-            <span class="menu-item-label">Anggota</span>
-          </a><!-- br-menu-link -->
-        </li><!-- br-menu-item -->
+    
 
         <li class="br-menu-item">
           <a href="#" class="br-menu-link with-sub <?= (($this->uri->segment(1) == 'Prodi' || $this->uri->segment(1) == 'Prodi/fakultas' ? 'active' : ''))?>">
