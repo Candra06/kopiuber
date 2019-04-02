@@ -46,8 +46,8 @@
                   <td><?= $d['fakultas']?></td>
                   <td><?= $d['prodi']?></td>
                   <td><?= $d['golongan']?></td>
-                  <td><?= $d['status_mahasiswa']?></td>
-                  <td><?= $d['status_keanggotaan']?></td>
+                  <td><?= $d['st_mahasiswa']?></td>
+                  <td><?= $d['st_anggota']?></td>
                   <td><?= $d['poin']?></td>
                   <td>
                     <a href="<?= base_url().$this->uri->segment(1)."/edit/$d[kd_anggota]"?>"><button type="" class="btn btn-primary btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-pencil-alt"></i></div></button></a> 

@@ -12,7 +12,7 @@
     
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub <?= (($this->uri->segment(1) == 'Prodi' || $this->uri->segment(1) == 'Prodi/fakultas' ? 'active' : ''))?>">
+          <a href="#" class="br-menu-link with-sub <?= (($this->uri->segment(1) == 'anggota' || $this->uri->segment(1) == 'pengurus' || $this->uri->segment(1) == 'aset' || $this->uri->segment(1) == 'jabatan' ? 'active' : ''))?>">
             <i class="menu-item-icon ion-ios-redo-outline tx-24"></i>
             <span class="menu-item-label">Master</span>
           </a><!-- br-menu-link -->
@@ -20,6 +20,7 @@
             <li class="sub-item"><a href="<?= base_url('anggota') ?>" class="sub-link <?= (($this->uri->segment(1) == 'anggota' ? 'active' : ''))?>">Anggota</a></li>
             <li class="sub-item"><a href="<?= base_url('pengurus') ?>" class="sub-link <?= (($this->uri->segment(1) == 'pengurus' ? 'active' : ''))?>">Pengurus</a></li>
             <li class="sub-item"><a href="<?= base_url('aset') ?>" class="sub-link <?= (($this->uri->segment(1) == 'aset' ? 'active' : ''))?>">Data Aset</a></li>
+            <li class="sub-item"><a href="<?= base_url('jabatan') ?>" class="sub-link <?= (($this->uri->segment(1) == 'jabatan' ? 'active' : ''))?>">Data Jabatan</a></li>
           </ul>
         </li><!-- br-menu-item -->
 

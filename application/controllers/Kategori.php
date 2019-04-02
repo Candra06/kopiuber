@@ -28,6 +28,7 @@ class kategori extends CI_Controller {
         $data['header'] = "Data Kategori Usaha";
         $data['content'] = "kategori/index";
         $data['head'] = "Edit Profil";
+        $data['notif'] = $this->M_front->notifikasi();
         // $data['data1'] = $this->db->get_where("user", ['kd_user' => $_SESSION['kd']])->row_array();
 		$this->load->view('backend/index',$data);		
     }
@@ -36,6 +37,8 @@ class kategori extends CI_Controller {
         $data = $this->mKategori->inputKategori();
 		echo json_encode($data);
     }
+
+   
 
     public function edit($kode){       
         $data['title'] = "Kopi Uber";
