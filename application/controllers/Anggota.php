@@ -39,6 +39,8 @@ class Anggota extends CI_Controller {
         $data['header'] = "Data Anggota";
         $data['content'] = "anggota/add";
         $data['data'] = null;
+        $data['notif'] = $this->M_front->notifikasi();
+        $data['data1'] = $this->db->get_where("anggota", ['kd_anggota' => $_SESSION['kd']])->row_array();
 		$this->load->view('backend/index',$data);
     }
 

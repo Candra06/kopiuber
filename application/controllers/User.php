@@ -45,11 +45,11 @@ class User extends CI_Controller {
         
         try{
             $date = date('Y-m-d H:i:s');
-            $kode_user = $this->mUser->kode();
+            $kode_user = $this->M_front->auto_kode(4);
             $pass = md5($p['password']);
             $array = [
                 'kd_user' => $kode_user,
-                'nama' => $p['nama'],
+                'kd_anggota' => $p['nama'],
                 'level' => $p['level'],
                 'email' => $p['email'],
                 'password' => $pass,

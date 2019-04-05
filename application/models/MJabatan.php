@@ -8,12 +8,8 @@ class MJabatan extends CI_Model{
         return $ada;
     }
 
-    public function progres_Cek($array, $kode){
-        $this->db->update("barang_servis", $array, ['kd_barang' => $kode]);
-    }
-
-    public function updateData($array, $kode){
-        $this->db->update("jabatan", $array, ['kd_jabatan' => $kode]);
+    public function updateData($data, $kode){
+        $this->db->update("jabatan", $data, ['kd_jabatan' => $kode]);
     }
 
     public function deleteData($kode)
@@ -23,8 +19,17 @@ class MJabatan extends CI_Model{
         return true;
     }
 
+    public function update($kode, $data)
+    {
+        $this->db->where('kd_jabatan', $kode);
+        $this->db->update('jabatan', $data);
+        return true;
+    }
+
     public function insert($array){
         $this->db->insert("jabatan", $array);
     }
+
+     
 }
 ?>

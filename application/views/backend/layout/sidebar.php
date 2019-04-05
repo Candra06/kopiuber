@@ -30,8 +30,8 @@
             <span class="menu-item-label">Simpanan</span>
           </a><!-- br-menu-link -->
           <ul class="br-menu-sub">
-            <li class="sub-item"><a href="<?= base_url('Prodi/index') ?>" class="sub-link <?= (($this->uri->segment(1) == 'Prodi' ? 'active' : ''))?>">Data Simpanan</a></li>
-            <li class="sub-item"><a href="<?= base_url('Prodi/fakultas') ?>" class="sub-link <?= (($this->uri->segment(1) == 'Prodi/fakultas' ? 'active' : ''))?>">Jenis Simpanan</a></li>
+            <li class="sub-item"><a href="<?= base_url('Prodi/index') ?>" class="sub-link <?= (($this->uri->segment(1) == 'simpanan' ? 'active' : ''))?>">Data Simpanan</a></li>
+            <li class="sub-item"><a href="<?= base_url('Prodi/fakultas') ?>" class="sub-link <?= (($this->uri->segment(1) == 'simpanan/fakultas' ? 'active' : ''))?>">Jenis Simpanan</a></li>
             <li class="sub-item"><a href="<?= base_url('Prodi/fakultas') ?>" class="sub-link <?= (($this->uri->segment(1) == 'Prodi/fakultas' ? 'active' : ''))?>">Data Aset</a></li>
           </ul>
         </li><!-- br-menu-item -->     

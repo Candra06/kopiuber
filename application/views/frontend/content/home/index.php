@@ -382,91 +382,20 @@
           <div class="col-lg-8">
 
             <div class="owl-carousel testimonials-carousel wow fadeInUp">
-    
+            <?php foreach( $pengurus as $p) {?>
               <div class="testimonial-item">
-                <img src="<?= base_url() ?>asset/frontend/img/perintis1.png" class="testimonial-img" alt="">
-                <h3>Drs. Pra Adi Sulistiyono, MSi</h3>
-                <h4>Pembina</h4>
+                <img src="<?= base_url('asset/upload/pengurus/').$p['foto'];?>" class="testimonial-img" alt="" style="width: 120px; height: 120px;">
+                <h3><?= $p['nama_anggota']?></h3>
+                <h4><?= $p['jabatan']?></h4>
                 <p>
-                Surabaya, 15 Mei 1961
+                <?= $p['tempat_lahir']?>, <?= $p['tgl_lahir']?>
                 </p>
                 <p>
-                Membangkitkan semangat berkoperasi di Era Digital
+                <?= $p['prodi']?> - <?= $p['fakultas']?>
                 </p>
               </div>
-    
-              <div class="testimonial-item">
-                <img src="<?= base_url() ?>asset/frontend/img/perintis2.png" class="testimonial-img" alt="">
-                <h3>Alfareza Firdaus</h3>
-                <h4>Content Creator</h4>
-                <p>
-                Bondowoso, 20 Desember 1999
-                </p>
-                <p>
-                Fakultas Ilmu Sosial dan Ilmu Politik - Ilmu Administrasi Negara
-                </p>
-              </div>
-    
-              <div class="testimonial-item">
-                <img src="<?= base_url() ?>asset/frontend/img/dara.png" class="testimonial-img" alt="">
-                <h3>Tatik Mufarrohatud Daraini</h3>
-                <h4>Divisi Keuangan dan Bendahara</h4>
-                <p>
-                Bondowoso, 20 Desember 1999
-                </p>
-                <p>
-                Fakultas Ilmu Sosial dan Ilmu Politik - Ilmu Administrasi Negara
-                </p>
-              </div>
-    
-              <div class="testimonial-item">
-                <img src="<?= base_url() ?>asset/frontend/img/rindang.png" class="testimonial-img" alt="">
-                <h3>Rindang Damai Mayomi</h3>
-                <h4>Divisi Promosi dan Marketing</h4>
-                <p>
-                Mojokerto, 30 Maret 2001
-                </p>
-                <p>
-                Fakultas Ilmu Sosial dan Ilmu Politik - Ilmu Administrasi Negara
-                </p>
-              </div>
+            <?php }?>
               
-              <div class="testimonial-item">
-                <img src="<?= base_url() ?>asset/frontend/img/iwan.png" class="testimonial-img" alt="">
-                <h3>Iwan Riswanto</h3>
-                <h4>Content Creator</h4>
-                <p>
-                Bondowoso, 04 Oktober 1999
-                </p>
-                <p>
-                Fakultas Ilmu Komputer - Sistem Informasi
-                </p>
-              </div>
-
-              <div class="testimonial-item">
-                <img src="<?= base_url() ?>asset/frontend/img/indra.png" class="testimonial-img" alt="">
-                <h3>Rizki Indra Permana</h3>
-                <h4>Content Creator</h4>
-                <p>
-                Bondowoso, 19 Maret 1999
-                </p>
-                <p>
-                Fakultas Ilmu Komputer - Teknologi Informasi
-                </p>
-              </div>
-
-              <div class="testimonial-item">
-                <img src="<?= base_url() ?>asset/frontend/img/perintis3.png" class="testimonial-img" alt="">
-                <h3>Abiyu Candra Adiansyah</h3>
-                <h4>IT Support</h4>
-                <p>
-                Trenggalek, 06 Mei 2000
-                </p>
-                <p>
-                Fakultas Ilmu Komputer - Sistem Informasi
-                </p>
-              </div>
-
             </div>
 
           </div>

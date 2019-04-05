@@ -55,4 +55,33 @@ class Jabatan extends CI_Controller {
         }
     }
 
+    public function update($kode){
+        $p = $_POST;
+        try{
+            $date = date('Y-m-d H:i:s');
+            $data = [
+                'jabatan' => $p['jabatan_edit'],
+                'modified_by' => $_SESSION['kd'],
+                'modified_at' => $date
+            ];
+            $this->MJabatan->updateData($data, $kode);
+            $this->session->set_flashdata("message", ['success', 'Berhasil update data '.$this->uri->segment(1)]);
+            redirect(base_url("jabatan"));
+        }catch (Exception $e){
+            $this->session->set_flashdata("message", ['danger', 'gagal update data '.$this->uri->segment(1)]);
+            redirect(base_url("jabatan"));
+        }
+    }
+
+    public function delete($kode){
+        try{
+            $this->MJabatan->deleteData($kode);
+            $this->session->set_flashdata("message", ['success', 'Berhasil hapus data '.$this->uri->segment(1)]);
+            redirect(base_url("jabatan"));
+        }catch(Exceptio $e){
+            $this->session->set_flashdata("message", ['danger', 'Gagal input data '.$this->uri->segment(1)]);
+            redirect(base_url("jabatan"));
+        }
+    }
+
 }

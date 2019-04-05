@@ -38,8 +38,41 @@
                   <td><?= $d['kd_jabatan']?></td>
                   <td><?= $d['jabatan']?></td>
                   <td>
-                    <a href="<?= base_url().$this->uri->segment(1)."/index/$d[kd_jabatan]"?>"><button type="" class="btn btn-primary btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-pencil-alt"></i></div></button></a> 
+                    <a data-toggle="modal" data-target="#mdl_jabatan_updt<?=$d['kd_jabatan']?>"
+                    >
+                    <!-- data-toggle="modal" data-target="#mdl_jabatan_updt" -->
+                    <button type="" id='btn-edit' class="btn btn-primary btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-pencil-alt"></i></div></button></a> 
                     <a href="<?= base_url().$this->uri->segment(1)."/delete/$d[kd_jabatan]"?>"><button type="" class="btn btn-danger btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-trash"></i></div></button></a>
+                      <div aria-hidden="true" role="dialog" tabindex="-1" id="mdl_jabatan_updt<?=$d['kd_jabatan']?>" class="modal fade">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content bd-0 tx-14">
+                            <div class="modal-header pd-y-20 pd-x-25">
+                              <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Edit Jabatan</h6>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form method="POST" action="<?php base_url('jabatan/update')?>"  class="">
+                              <div class="modal-body pd-25">
+                                <div class="form-group">
+                                  <label for="form-control-label" class="">Jabatan</label>
+                                  <input type="hidden" name="updt_kd_jabatan" value='<?= $d['kd_jabatan']?>' id="updt_kd_jabatan" class="form-control pd-y-12" placeholder="Masukkan Jabatan">
+                                  <input type="text" name="jabatan_edit" value='<?= $d['jabatan']?>' id="jabatan_edit" class="form-control pd-y-12" placeholder="Masukkan Jabatan">
+                                </div><!-- form-group -->
+                              
+                              </div>
+                              <div class="modal-footer">
+                                <a href="<?= base_url().$this->uri->segment(1)."/update/$d[kd_jabatan]"?>">
+                                  <button type="button" class="btn btn-primary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-semibold" >Simpan</button>
+                                </a>
+                                <button type="button" class="btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-semibold" data-dismiss="modal">Batal</button>
+                              </div>
+                            </form>
+                            
+                            
+                          </div>
+                        </div><!-- modal-dialog -->
+                      </div><!-- modal -->
                   </td>
                 </tr>
                 <?php } ?>
@@ -77,4 +110,7 @@
         </div><!-- modal-dialog -->
       </div><!-- modal -->
 
+      <!-- BASIC MODAL -->
+
+                    
      

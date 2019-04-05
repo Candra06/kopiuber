@@ -49,6 +49,13 @@ class M_front extends CI_Model{
         return $data;
     }
 
+    public function pengurus()
+    {
+        $q = $this->db->query("SELECT ag.*, pn.*, jb.*, pr.*, fk.* FROM anggota ag, pengurus pn, jabatan jb, prodi pr, fakultas fk WHERE pn.kd_anggota=ag.kd_anggota AND pn.kd_jabatan=jb.kd_jabatan AND ag.kd_prodi=pr.kd_prodi AND pr.kd_fakultas=fk.kd_fakultas");
+        $data = $q->result_array();
+        return $data;
+    }
+
    public function apiTerima($array, $kode)
    {
     $this->db->update("anggota", $array, ['kd_anggota' => $kode]);

@@ -3,13 +3,19 @@
 class MPengurus extends CI_Model{
 
     public function tampilData(){
-        $q = $this->db->query("SELECT * FROM pengurus");
+        $q = $this->db->query("SELECT pn.*, jb.kd_jabatan, jb.jabatan, ag.nama_anggota FROM pengurus pn, jabatan jb, anggota ag WHERE pn.kd_jabatan=jb.kd_jabatan AND pn.kd_anggota=ag.kd_anggota");
         $ada = $q->result_array();
         return $ada;
     }
 
-    public function progres_Cek($array, $kode){
-        $this->db->update("barang_servis", $array, ['kd_barang' => $kode]);
+    public function data_anggota(){
+        $q = $this->db->query("SELECT * FROM anggota");
+        $ada = $q->result_array();
+        return $ada;
+    }
+
+    public function insert($data){
+        $this->db->insert("pengurus", $data);
     }
 
     public function updateData($array, $kode){
@@ -18,8 +24,8 @@ class MPengurus extends CI_Model{
 
     public function deleteData($kode)
     {
-        $this->db->where('kd_anggota', $kode);
-        $this->db->delete('anggota');
+        $this->db->where('kd_pengurus', $kode);
+        $this->db->delete('pengurus');
         return true;
     }
 
