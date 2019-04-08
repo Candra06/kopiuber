@@ -1,6 +1,6 @@
 <?php
 
-class mPelanggan extends CI_Model{
+class MPelanggan extends CI_Model{
 
     public function tampilData(){
         $q = $this->db->query("SELECT * FROM pelanggan");

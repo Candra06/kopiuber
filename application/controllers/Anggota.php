@@ -10,6 +10,7 @@ class Anggota extends CI_Controller {
         $this->load->helper('url');
         // $this->load->model("mBarang");
         $this->load->model("M_front");
+        $this->load->model("mUser");
         if ($this->uri->segment(2) == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
             $this->input();
         } else if($this->uri->segment(2) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
@@ -46,7 +47,7 @@ class Anggota extends CI_Controller {
 
     public function input(){
         $p = $_POST;
-
+        $pass = md5($p['nim']);
         try{
             $date = date('Y-m-d H:i:s');
             $kode_user = $this->M_front->auto_kode(6); 
@@ -67,7 +68,19 @@ class Anggota extends CI_Controller {
                 'create_by' => $_SESSION['kd'],
                 'create_at' => $date
             ];
-            $this->mPelanggan->insert($array);
+
+            $user = [
+                'kd_user' => $kode_user,
+                'kd_anggota' => $kode_user,
+                'level' => 5,
+                'username' => $p['email'],
+                'password' => $pass,
+                'status' => 2,
+                'create_by' => $_SESSION['kd'],
+                'create_date' => $date
+            ];
+            $this->MUser->insert_anggota($user);
+            $this->MAnggota->insert($array);
             $this->session->set_flashdata("message", ['success', 'Berhasil input data '.$this->uri->segment(1)]);
             redirect(base_url("anggota"));
         }catch (Exception $e){
@@ -86,64 +99,5 @@ class Anggota extends CI_Controller {
 		$this->load->view('backend/index',$data);
     }
 
-    public function progresCek($kode){
-       $p = $_POST;
 
-       try{
-           $date = date('Y-m-d H:i:s');
-           $array = [
-                'modified_at' => $date,
-                'modified_by' => $_SESSION['kd'],
-                'progres' => 1
-           ];
-           $this->mBarang->progres_Cek($array,$kode);
-           $this->session->set_flashdata("message", ['success', 'Berhasil update data '.$this->uri->segment(1)]);
-           redirect(base_url("barang"));
-        }catch (Exception $e){
-            $this->session->set_flashdata("message", ['danger', 'Gagal update data '.$this->uri->segment(1)]);
-            redirect(base_url("barang"));
-        }
-    }
-
-    public function progresPerbaikan($kode){
-        $p = $_POST;
-
-        try{
-           $date = date('Y-m-d H:i:s');
-           $array = [
-                'modified_by' => $date,
-                'modified_by' => $_SESSION['kd'],
-                'progres' => 2
-           ];
-           $this->mBarang->progres_Cek($array,$kode);
-           $this->session->set_flashdata("message", ['success', 'Berhasil update data '.$this->uri->segment(1)]);
-           redirect(base_url("barang"));
-        }catch (Exception $e){
-            $this->session->set_flashdata("message", ['danger', 'Gagal update data '.$this->uri->segment(1)]);
-            redirect(base_url("barang"));
-       }
-    }
-
-    public function progresSelesai($kode){
-        $p = $_POST;
-
-        try{
-           $date = date('Y-m-d H:i:s');
-           $array = [
-                'modified_by' => $date,
-                'modified_by' => $_SESSION['kd'],
-                'progres' => 4
-           ];
-           $this->mBarang->progres_Cek($array,$kode);
-           $this->session->set_flashdata("message", ['success', 'Berhasil update data '.$this->uri->segment(1)]);
-           redirect(base_url("barang"));
-        }catch (Exception $e){
-            $this->session->set_flashdata("message", ['danger', 'Gagal update data '.$this->uri->segment(1)]);
-            redirect(base_url("barang"));
-        }
-    }
-
-    public function gantiSparepart($kode){
-        
-    }
 }

@@ -12,7 +12,7 @@ class Pengurus extends CI_Controller {
         $this->load->model("MJabatan");
 		$this->load->model("M_front");
         $this->load->model("MPengurus");
-        $this->load->model("mUser");
+        $this->load->model("MUser");
         $this->load->library('upload');
         if ($this->uri->segment(2) == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
             $this->input();
@@ -99,7 +99,7 @@ class Pengurus extends CI_Controller {
                 'create_at' => $date
             ];
             $this->MPengurus->insert($data);
-            $this->mUser->insert($array);
+            $this->MUser->insert($array);
             $this->session->set_flashdata("message", ['success', 'Berhasil input data '.$this->uri->segment(1)]);
             redirect(base_url("pengurus"));
             }

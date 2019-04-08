@@ -1,6 +1,6 @@
 <?php
 
-class mKategori extends CI_Model{
+class MKategori extends CI_Model{
 
     public function tampilData(){
         $q = $this->db->query("SELECT * FROM kategori_usaha");

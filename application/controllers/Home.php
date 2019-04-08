@@ -25,8 +25,9 @@ class Home extends CI_Controller {
 			$this->load->helper("Input_helper");
 			$this->load->helper('url');
 			$this->load->model("M_front");
-			$this->load->model("mAnggota");
-			$this->load->model("mProdi_Fakultas");
+			$this->load->model("MAnggota");
+			$this->load->model("MUser");
+			$this->load->model("MProdi_Fakultas");
 			// if($_SERVER['REQUEST_METHOD'] == "POST"){
 			// $this->register();
 			// }
@@ -50,8 +51,8 @@ class Home extends CI_Controller {
 	{
 		$data['title'] = "Kopi Uber";
 		$data['content'] = "home/register";
-		$data['data_fakultas'] = $this->mProdi_Fakultas->tampilDataFakultas();
-		$data['data_prodi'] = $this->mProdi_Fakultas->tampilDataProdi();
+		$data['data_fakultas'] = $this->MProdi_Fakultas->tampilDataFakultas();
+		$data['data_prodi'] = $this->MProdi_Fakultas->tampilDataProdi();
 		$this->load->view('frontend/index',$data);
 	}
 
@@ -61,6 +62,8 @@ class Home extends CI_Controller {
 		try{
 				$date = date('Y-m-d H:i:s');
 				$kode_user = $this->M_front->auto_kode(6); 
+				$kode_user_anggota = $this->M_front->auto_kode(4); 
+				$pass = md5($p['nim']);
 				$array = [
 						'kd_anggota' => $kode_user,
 						'nama_anggota' => $p['nama'],
@@ -78,7 +81,18 @@ class Home extends CI_Controller {
 						'create_by' => $kode_user,
 						'create_at' => $date
 				];
-				$this->mAnggota->insert($array);
+
+				$user = [
+					'kd_user' => $kode_user_anggota,
+					'kd_anggota' => $kode_user,
+					'level' => 5,
+					'username' => $p['email'],
+					'password' => $pass,
+					'status' => 2,
+					'create_by' => $kode_user
+				];
+				$this->MUser->insert_anggota($user);
+				$this->MAnggota->insert($array);
 				$this->session->set_flashdata("message", ['success', 'Registrasi Berhasil, silahkan tunggu persetujuan Admin :) ']);
 				echo "<script>location.reload()</script>";
 		}catch (Exception $e){

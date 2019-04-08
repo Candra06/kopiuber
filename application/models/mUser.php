@@ -1,6 +1,6 @@
 <?php
 
-class mUser extends CI_Model{
+class MUser extends CI_Model{
 
     public function tampilData(){
         $q = $this->db->query("SELECT *, (CASE 
@@ -33,6 +33,10 @@ class mUser extends CI_Model{
 
     public function insert($array){
         $this->db->insert("user", $array);
+    }
+
+    public function insert_anggota($user){
+        $this->db->insert("user", $user);
     }
 
     public function updateData($array, $kode){

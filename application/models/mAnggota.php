@@ -1,6 +1,6 @@
 <?php
 
-class mAnggota extends CI_Model{
+class MAnggota extends CI_Model{
 
     public function tampilData(){
         $q = $this->db->query("SELECT ag.*, pr.kd_prodi, pr.prodi, fk.kd_fakultas, fk.fakultas, 

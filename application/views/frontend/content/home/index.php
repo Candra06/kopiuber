@@ -10,7 +10,7 @@
     <div class="container">
 
       <div class="intro-img">
-        <img src="<?= base_url() ?>asset/frontend/img/Kopi_Uber.png" alt="" <?php if ?> style="margin-left:;" class="img-fluid">
+        <img src="<?= base_url() ?>asset/frontend/img/Kopi_Uber.png" alt="" style="margin-left:;" class="img-fluid">
       </div>
 
       <div class="intro-info">

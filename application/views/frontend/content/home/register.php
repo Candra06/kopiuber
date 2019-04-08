@@ -115,9 +115,12 @@
                 </div>
 
                 <div class="form-group">
-                <label for="" class="">Alamat</label>
+                  <label for="" class="">Alamat</label>
                   <textarea class="form-control" name="alamat"  required id="alamat" rows="3" data-rule="required" data-msg="Please write something for us" placeholder="Alamat"></textarea>
-                  
+                </div>
+
+                <div class="form-group">
+                  <p></p>
                 </div>
                 <div class="text-center">
                   <button type="submit" title="Send Message">Daftar</button>
