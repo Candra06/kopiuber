@@ -16,9 +16,15 @@ class mAnggota extends CI_Model{
         return $ada;
     }
 
+    public function insert($array){
+        $this->db->insert("anggota", $array);
+    }
+
     public function progres_Cek($array, $kode){
         $this->db->update("barang_servis", $array, ['kd_barang' => $kode]);
     }
+
+
 
     public function updateData($array, $kode){
         $this->db->update("anggota", $array, ['kd_anggota' => $kode]);

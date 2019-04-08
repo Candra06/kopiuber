@@ -21,14 +21,18 @@ class Home extends CI_Controller {
 	 function __construct()
   	{
 		  parent::__Construct();
-		  $this->load->helper("Response_helper");
-		  $this->load->helper("Input_helper");
+			$this->load->helper("Response_Helper");
+			$this->load->helper("Input_helper");
+			$this->load->helper('url');
 			$this->load->model("M_front");
 			$this->load->model("mAnggota");
 			$this->load->model("mProdi_Fakultas");
 			// if($_SERVER['REQUEST_METHOD'] == "POST"){
 			// $this->register();
 			// }
+			if ($this->uri->segment(2) == "registrasi" && $_SERVER['REQUEST_METHOD'] == "POST") {
+				$this->register();
+			}
   	}
 
 	public function index()
@@ -44,7 +48,6 @@ class Home extends CI_Controller {
 
 	public function registrasi()
 	{
-		$this->load->model("M_front");
 		$data['title'] = "Kopi Uber";
 		$data['content'] = "home/register";
 		$data['data_fakultas'] = $this->mProdi_Fakultas->tampilDataFakultas();
@@ -53,24 +56,35 @@ class Home extends CI_Controller {
 	}
 
 	public function register(){
-		$data = $this->mAnggota->registerAnggota();
-		echo json_encode($data);
-	}
-	public function test(){
-				echo "workds";
-	}
+		$p = $_POST;
 
-	// public function daftar_anggota(){
-	// 	$data = $this->M_front->daftarAnggota();
-	// 	echo json_encode($data);
-	// }
-
-	public function visi(){
-		$this->load->model("M_front");
-		$data['visi'] = $this->M_front->tampil_visi();
-		// $data['title'] = "Kopi Uber";
-		// $data['content'] = "home/visi";
-		echo json_encode();
+		try{
+				$date = date('Y-m-d H:i:s');
+				$kode_user = $this->M_front->auto_kode(6); 
+				$array = [
+						'kd_anggota' => $kode_user,
+						'nama_anggota' => $p['nama'],
+						'nim' => $p['nim'],
+						'tgl_lahir' => $p['tanggal'],
+						'tempat_lahir' => $p['tempat'],
+						'kd_prodi' => $p['prodi'],
+						'kd_fakultas' => $p['fakultas'],
+						'status_mahasiswa' => 1,
+						'golongan' => 2,
+						'status_keanggotaan' => 1,
+						'no_hp' => $p['no_hp'],
+						'alamat' => $p['alamat'],
+						'email' => $p['email'],
+						'create_by' => $kode_user,
+						'create_at' => $date
+				];
+				$this->mAnggota->insert($array);
+				$this->session->set_flashdata("message", ['success', 'Registrasi Berhasil, silahkan tunggu persetujuan Admin :) ']);
+				echo "<script>location.reload()</script>";
+		}catch (Exception $e){
+				$this->session->set_flashdata("message", ['danger', 'Gagal input data '.$this->uri->segment(1)]);
+				echo "<script>location.reload()</script>";
+		}
 	}
 
 	public function getProdi()
@@ -83,18 +97,4 @@ class Home extends CI_Controller {
 			echo "<option value='$fk[kd_prodi]'>$fk[prodi]</option>";
 		}
 	}
-
-	public function logout(){
-		session_destroy();
-		redirect(base_url());
-	}
-	
-    // public function register(){
-    //     $p = $_POST;
-
-    //     try{
-    //         $date = date('Y-m-d H:i:s');
-    //         $kode
-    //     }
-    // }
 }

@@ -54,6 +54,8 @@ class Anggota extends CI_Controller {
                 'kd_anggota' => $kode_user,
                 'nama_anggota' => $p['nama'],
                 'nim' => $p['nim'],
+                'tgl_lahir' => $p['tanggal'],
+                'tempat_lahir' => $p['tempat']
                 'kd_prodi' => $p['prodi'],
                 'kd_fakultas' => $p['fakultas'],
                 'status_mahasiswa' => 1,
@@ -73,6 +75,8 @@ class Anggota extends CI_Controller {
             redirect(base_url("anggota"));
         }
     }
+
+    
 
     public function edit($kode){       
         $data['title'] = "Kopi Uber";
