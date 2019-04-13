@@ -10,7 +10,7 @@
 
           <div class="col-lg-4 col-md-6 footer-info">
             <h3>Kopi Uber</h3>
-            <p>Merupakan sebuah koperai digital yang bertujuan untuk memakmurkan anggotanya supaya menjadi pedoman dalam menjalani hidup yang kian berkembang</p>
+            <p>Merupakan sebuah koperasi digital yang bertujuan untuk memakmurkan anggotanya supaya menjadi pedoman dalam menjalani hidup yang kian berkembang</p>
           </div>
 
          

@@ -56,6 +56,53 @@ class M_front extends CI_Model{
         return $data;
     }
 
+    public function kirim_email($tujuan){
+        // $config = array(     
+        //     'protocol' => 'smtp',
+        //         'smtp_host' => 'ssl://smtp.googlemail.com',
+        //         'smtp_port' => 465,
+        //         'smtp_user' => 'rswaluyojati123@gmail.com',
+        //         'smtp_pass' => 'rswj12345',
+        //         'mailtype'  => 'html', 
+        //         'charset'   => 'iso-8859-1'
+        // );
+        // $this->load->library('email', $config);
+        // $this->email->set_newline("\r\n");
+        $this->load->library('email');
+
+        $config['protocol']    = 'smtp';
+
+        $config['smtp_host']    = 'ssl://smtp.googlemail.com';
+        // $config['smtp_host']    = 'ssl://smtp.googlemail.com';
+
+        $config['smtp_port']    = '465';
+
+        $config['smtp_timeout'] = '7';
+
+        $config['smtp_user']    = 'putrasimdig597@gmail.com';
+
+        $config['smtp_pass']    = 'Joker123';
+
+        $config['charset']      = 'utf-8';
+
+        $config['newline']      = "\r\n";
+
+        $config['mailtype']     = 'text'; // or html
+
+        $config['validation'] = TRUE; // bool whether to validate email or not      
+
+        $this->email->initialize($config);
+        $this->email->from('putrasimdig597@gmail.com', 'Abiyu Candra');
+        $this->email->cc('putrasimdig597@gmail.com');
+        $this->email->to($tujuan);
+        $this->email->subject('Pemberitahuan');
+        $this->email->message('Selamat anda berhasil bergabung boy!');
+
+        $kirim = $this->email->send();
+        return $kirim;
+        
+    }
+
    public function apiTerima($array, $kode)
    {
     $this->db->update("anggota", $array, ['kd_anggota' => $kode]);

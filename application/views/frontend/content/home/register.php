@@ -6,10 +6,10 @@
     <!--==========================
       Contact Section
     ============================-->
-    <section id="contact" class="clearfix" style="padding-top: 10%;">
+    <section id="contact" class="clearfix">
       <div class="container-fluid">
 
-        <div class="section-header">
+        <div class="section-header" style="margin-top:5%;">
           <h3>Daftar Untuk Mulai Bergabung</h3>
         </div>
 
@@ -120,10 +120,14 @@
                 </div>
 
                 <div class="form-group">
-                  <p></p>
+                <ul class="">
+                  <li><i style="color: red;">Anggota diwajibkan membayar Simpanan Pokok sebesar RP. 10.000 pada awal bergabung menjadi Angggota KOPI UBER.</i></li>
+                  <li><i style="color: red;">Anggota diwajibkan membayar Simpanan Wajib sebesar RP. 5.000 setiap bulan per tanggal 1-10 setiap bulannya.</i></li>
+                </ul>
+                  <p style="font-size:15px;"><input onchange="document.getElementById('daftar').disabled = !this.checked;" type="checkbox" name="persetujuan" id="persetujuan"> Saya setuju dengan ketentuan di atas.</p>
                 </div>
                 <div class="text-center">
-                  <button type="submit" title="Send Message">Daftar</button>
+                  <button type="submit" id="daftar" name="daftar" disabled>Daftar</button>
                 </div>
               </form>
             </div>
@@ -147,6 +151,18 @@
                   document.getElementById("no_hp").value = '';
                   document.getElementById("email").value = '';
                   document.getElementById("alamat").value = '';
+            }
+
+            function cek() {
+              var checker = document.getElementById('persetujuan');
+              var sendbtn = document.getElementById('daftar');
+              // when unchecked or checked, run the function
+              checker.onchange = function(){
+              if(this.checked){
+                  sendbtn.disabled = false;
+              } else {
+                  sendbtn.disabled = true;
+              }
             }
 
            
