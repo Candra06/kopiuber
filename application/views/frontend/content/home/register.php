@@ -94,9 +94,7 @@
                   <label for="" class="">Prodi</label>
                     <select class="form-control" id="prodi" name="prodi" required>
                       <option value="">Pilih Prodi</option>
-                    </select>
-                    <!-- <input type="text" class="form-control" name="prodi" id="prodi" placeholder="Prodi"  /> -->
-                    
+                    </select>                    
                   </div>
                 </div>
 

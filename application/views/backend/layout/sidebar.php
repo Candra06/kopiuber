@@ -12,7 +12,7 @@
     
 
         <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub <?= (($this->uri->segment(1) == 'anggota' || $this->uri->segment(1) == 'pengurus' || $this->uri->segment(1) == 'aset' || $this->uri->segment(1) == 'jabatan' ? 'active' : ''))?>">
+          <a href="#" class="br-menu-link with-sub <?= (($this->uri->segment(1) == 'anggota' || $this->uri->segment(1) == 'pengurus' || $this->uri->segment(1) == 'aset' || $this->uri->segment(1) == 'jabatan' || $this->uri->segment(1) == 'akun'? 'active' : ''))?>">
             <i class="menu-item-icon ion-ios-redo-outline tx-24"></i>
             <span class="menu-item-label">Master</span>
           </a><!-- br-menu-link -->
@@ -21,6 +21,9 @@
             <li class="sub-item"><a href="<?= base_url('pengurus') ?>" class="sub-link <?= (($this->uri->segment(1) == 'pengurus' ? 'active' : ''))?>">Pengurus</a></li>
             <li class="sub-item"><a href="<?= base_url('aset') ?>" class="sub-link <?= (($this->uri->segment(1) == 'aset' ? 'active' : ''))?>">Data Aset</a></li>
             <li class="sub-item"><a href="<?= base_url('jabatan') ?>" class="sub-link <?= (($this->uri->segment(1) == 'jabatan' ? 'active' : ''))?>">Data Jabatan</a></li>
+            <li class="sub-item"><a href="<?= base_url('klasifikasi_akun') ?>" class="sub-link <?= (($this->uri->segment(1) == 'klasifikasi_akun' ? 'active' : ''))?>">Klasifikasi Akun</a></li>
+            <li class="sub-item"><a href="<?= base_url('sub_klasifikasi_akun') ?>" class="sub-link <?= (($this->uri->segment(1) == 'sub_klasifikasi_akun' ? 'active' : ''))?>">Sub Klasifikasi Akun</a></li>
+            <li class="sub-item"><a href="<?= base_url('akun') ?>" class="sub-link <?= (($this->uri->segment(1) == 'akun' ? 'active' : ''))?>">Akun</a></li>
           </ul>
         </li><!-- br-menu-item -->
 

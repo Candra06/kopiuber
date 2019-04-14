@@ -18,15 +18,14 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">Nama Lengkap: <span class="tx-danger">*</span></label>
-                  <input class="form-control " type="text" name="nama"  placeholder="Nama" required> 
-                  <!-- // value="<?php  if( $data == null){ echo $kode_user; } else { echo Input_helper::postOrOr('kd_user', $data['kd_user']); } ?>" -->
-                  <!-- <input class="form-control form-control-dark" type="hidden" name="kd_user" value="<?= Input_helper::postOrOr('kd_user', $data['kd_user']) ?>" placeholder="Kode Teknisi" disabled> -->
+                  <input class="form-control " type="text" name="nama"  placeholder="Nama" value="<?= Input_helper::postOrOr('nama', $data['nama_anggota']) ?>" required> 
+                  
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group">
-                  <label class="form-control-label">NIM: <span class="tx-danger">*</span></label>
-                  <input class="form-control " type="number" name="nim" value="<?= Input_helper::postOrOr('nama', $data['nama']) ?>" placeholder="Masukkan NIM" required>
+                  <label class="form-control-label">NIM/NIP: <span class="tx-danger">*</span></label>
+                  <input class="form-control " type="number" name="nim" value="<?= Input_helper::postOrOr('nim', $data['nim']) ?>" placeholder="Masukkan NIM/NIP" required>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
@@ -38,51 +37,79 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">No HP <span class="tx-danger">*</span></label>
-                  <input class="form-control " type="number" name="no_hp" value="<?= Input_helper::postOrOr('email', $data['email']) ?>" placeholder="Masukkan No HP" required >
-                  <!-- <input class="form-control form-control-dark" type="hidden" name="kd_user" value="<?= Input_helper::postOrOr('kd_user', $data['kd_user']) ?>" placeholder="Kode Teknisi" disabled> -->
+                  <input class="form-control " type="number" name="no_hp" value="<?= Input_helper::postOrOr('no_hp', $data['no_hp']) ?>" placeholder="Masukkan No HP" required >
+                  
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">Fakultas: <span class="tx-danger">*</span></label>
-                  <select class="form-control select2" name="fakultas" data-placeholder="Pilih Fakultas">
+                  <select class="form-control select2" name="fakultas"  onchange="getDataProdi(this.options[this.selectedIndex].value)" data-placeholder="Pilih Fakultas">
                     <option value="">Pilih Fakultas</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Teknisi</option>
-                    <option value="3">Operator</option>
+                    <?php foreach($data_fakultas as $df){?>
+                      <option value="<?= $df['kd_fakultas'];?>"><?= $df['fakultas'];?></option>
+                    <?php }?>
+                  </select>
+                </div>
+              </div><!-- col-4 -->
+              <script type="text/javascript">
+                    function getDataProdi(select_item) {
+                        $.ajax({
+                          type: 'post',
+                          url: '<?= base_url()."Anggota/getProdi"?>',
+                          data: {
+                            get_option:select_item
+                          },success: function(response) {
+                            document.getElementById("prodi").innerHTML = response;
+                          },error: function(XMLHttpRequest, textStatus, errorThrown){
+                            alert("Status: " + textStatus); 
+                            alert("Error: " + errorThrown);
+                          }
+                        })
+                      }
+                  </script>
+              <div class="col-lg-4">
+                <div class="form-group mg-b-10-force">
+                <label class="form-control-label">Prodi: <span class="tx-danger">*</span></label>
+                <select class="form-control select2" name="prodi" id="prodi" data-placeholder="Pilih Prodi">
+                    <option value="">Pilih Prodi</option>
                   </select>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-4">
-                <div class="form-group mg-b-10-force">
-                <label class="form-control-label">Prodi: <span class="tx-danger">*</span></label>
-                <select class="form-control select2" name="prodi" data-placeholder="Pilih Prodi">
-                    <option value="">Pilih Prodi</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Teknisi</option>
-                    <option value="3">Operator</option>
-                  </select>
+                <div class="form-group">
+                  <label class="form-control-label">Tempat Lahir <span class="tx-danger">*</span></label>
+                  <input class="form-control " type="text" name="tempat_lahir" value="<?= Input_helper::postOrOr('tempat_lahir', $data['tempat_lahir']) ?>" placeholder="Masukkan Tempat Lahir" required >
+                  
                 </div>
               </div><!-- col-4 -->
-              
-
-              <div class="col-lg-8">
-                <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Alamat: <span class="tx-danger">*</span></label>
-                  <input class="form-control " type="text" name="alamat" value="<?= Input_helper::postOrOr('alamat', $data['alamat']) ?>" placeholder="Masukkan Alamat" required>
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">Tanggal Lahir<span class="tx-danger">*</span></label>
+                  <input class="form-control " type="date" name="tgl_lahir" value="<?= Input_helper::postOrOr('tgl_lahir', $data['tgl_lahir']) ?>" placeholder="Masukkan Tanggal Lahir" required >
+                  
                 </div>
-              </div><!-- col-8 -->
+              </div><!-- col-4 -->
+
+              
               <div class="col-lg-4">
                 <div class="form-group mg-b-10-force">
                 <label class="form-control-label">Status: <span class="tx-danger">*</span></label>
                   <select class="form-control  select-2" name="status" placeholder="Pilih Status">
-                    <option value="">Pilih Prodi</option>
+                    <option value="">Pilih Status</option>
                     <option value="1">Aktif</option>
                     <option value="0">Banned</option>
                     
                   </select>
                 </div>
               </div><!-- col-4 -->
+
+              <div class="col-lg-8">
+                <div class="form-group mg-b-10-force">
+                  <label class="form-control-label">Alamat Rumah/KOS: <span class="tx-danger">*</span></label>
+                  <input class="form-control " type="text" name="alamat" value="<?= Input_helper::postOrOr('alamat', $data['alamat']) ?>" placeholder="Masukkan Alamat" required>
+                </div>
+              </div><!-- col-8 -->
             </div><!-- row -->
 
             <div class="form-layout-footer">

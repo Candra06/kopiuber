@@ -79,9 +79,9 @@ class M_front extends CI_Model{
 
         $config['smtp_timeout'] = '7';
 
-        $config['smtp_user']    = 'putrasimdig597@gmail.com';
+        $config['smtp_user']    = 'koperasidigital.kopiuber@gmail.com';
 
-        $config['smtp_pass']    = 'Joker123';
+        $config['smtp_pass']    = 'bismillah5758';
 
         $config['charset']      = 'utf-8';
 
@@ -92,11 +92,11 @@ class M_front extends CI_Model{
         $config['validation'] = TRUE; // bool whether to validate email or not      
 
         $this->email->initialize($config);
-        $this->email->from('putrasimdig597@gmail.com', 'Abiyu Candra');
-        $this->email->cc('putrasimdig597@gmail.com');
+        $this->email->from('koperasidigital.kopiuber@gmail.com', 'Kopi Uber');
+        $this->email->cc('koperasidigital.kopiuber@gmail.com');
         $this->email->to($tujuan);
         $this->email->subject('Pemberitahuan');
-        $this->email->message('Selamat anda berhasil bergabung boy!');
+        $this->email->message('Selamat anda berhasil bergabung.');
 
         $kirim = $this->email->send();
         return $kirim;

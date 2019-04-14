@@ -56,13 +56,13 @@ class Dashboard extends CI_Controller {
                 'modified_by' => $_SESSION['kd'],
                 'modified_at' => $date
             ];
-            echo $q['email'];
+            // echo $q['email'];
             
             $k = $this->M_front->kirim_email($q['email']);
-            echo json_encode($k);
-            echo json_encode($q);
-            // $this->M_front->apiTerima($array, $kode);
-            // $this->M_front->apiTerimaUser($array1, $kode);
+            // echo json_encode($k);
+            // echo json_encode($q);
+            $this->M_front->apiTerima($array, $kode);
+            $this->M_front->apiTerimaUser($array1, $kode);
             $this->session->set_flashdata("message", ['success', 'Berhasil memverifikasi data ']);
             // redirect(base_url("dashboard"));
         }catch(Exception $e){

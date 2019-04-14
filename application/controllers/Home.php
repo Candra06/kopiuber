@@ -74,7 +74,9 @@ class Home extends CI_Controller {
 						'kd_fakultas' => $p['fakultas'],
 						'status_mahasiswa' => 1,
 						'golongan' => 2,
-						'status_keanggotaan' => 1,
+						'poin' => 0,
+						'persetujuan' => 1,
+						'status_keanggotaan' => 2,
 						'no_hp' => $p['no_hp'],
 						'alamat' => $p['alamat'],
 						'email' => $p['email'],
@@ -89,7 +91,8 @@ class Home extends CI_Controller {
 					'username' => $p['email'],
 					'password' => $pass,
 					'status' => 2,
-					'create_by' => $kode_user
+					'create_by' => $kode_user,
+					'create_at' => $date
 				];
 				$this->MUser->insert_anggota($user);
 				$this->MAnggota->insert($array);

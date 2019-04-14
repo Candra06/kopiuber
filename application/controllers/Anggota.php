@@ -8,9 +8,10 @@ class Anggota extends CI_Controller {
         $this->load->helper("Response_Helper");
         $this->load->helper("Input_helper");
         $this->load->helper('url');
-        // $this->load->model("mBarang");
+        $this->load->model("MProdi_Fakultas");
         $this->load->model("M_front");
-        $this->load->model("mUser");
+        $this->load->model("MUser");
+        $this->load->model("MAnggota");
         if ($this->uri->segment(2) == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
             $this->input();
         } else if($this->uri->segment(2) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
@@ -40,10 +41,23 @@ class Anggota extends CI_Controller {
         $data['header'] = "Data Anggota";
         $data['content'] = "anggota/add";
         $data['data'] = null;
+        $data['data_fakultas'] = $this->MProdi_Fakultas->tampilDataFakultas();
+		$data['data_prodi'] = $this->MProdi_Fakultas->tampilDataProdi();
         $data['notif'] = $this->M_front->notifikasi();
         $data['data1'] = $this->db->get_where("anggota", ['kd_anggota' => $_SESSION['kd']])->row_array();
 		$this->load->view('backend/index',$data);
     }
+
+    public function getProdi()
+	{
+		$data = $_POST;
+		$fak = $data['get_option'];
+		$fakultas = $this->M_front->getFakultas($fak);
+		echo "<option value=''>Pilih Prodi</option>";
+		foreach ($fakultas as $fk) {
+			echo "<option value='$fk[kd_prodi]'>$fk[prodi]</option>";
+		}
+	}
 
     public function input(){
         $p = $_POST;
@@ -55,14 +69,15 @@ class Anggota extends CI_Controller {
                 'kd_anggota' => $kode_user,
                 'nama_anggota' => $p['nama'],
                 'nim' => $p['nim'],
-                'tgl_lahir' => $p['tanggal'],
-                'tempat_lahir' => $p['tempat']
+                'tgl_lahir' => $p['tgl_lahir'],
+                'tempat_lahir' => $p['tempat_lahir'],
                 'kd_prodi' => $p['prodi'],
                 'kd_fakultas' => $p['fakultas'],
                 'status_mahasiswa' => 1,
                 'golongan' => 2,
-                'status_keanggotaan' => 1,
+                'status_keanggotaan' => 2,
                 'no_hp' => $p['no_hp'],
+                'persetujuan' => 1,
                 'alamat' => $p['alamat'],
                 'email' => $p['email'],
                 'create_by' => $_SESSION['kd'],
@@ -77,7 +92,7 @@ class Anggota extends CI_Controller {
                 'password' => $pass,
                 'status' => 2,
                 'create_by' => $_SESSION['kd'],
-                'create_date' => $date
+                'create_at' => $date
             ];
             $this->MUser->insert_anggota($user);
             $this->MAnggota->insert($array);
@@ -89,13 +104,13 @@ class Anggota extends CI_Controller {
         }
     }
 
-    
-
     public function edit($kode){       
         $data['title'] = "Kopi Uber";
         $data['header'] = "Ubah Data Anggota";
-        $data['content'] = "pelanggan/add";
-        $data['data'] = $this->db->get_where("pelanggan", ['kd_pelanggan' => $kode])->row_array();
+        $data['content'] = "anggota/add";
+        $data['data'] = $this->db->get_where("anggota", ['kd_anggota' => $kode])->row_array();
+        $data['notif'] = $this->M_front->notifikasi();
+        $data['data1'] = $this->db->get_where("anggota", ['kd_anggota' => $_SESSION['kd']])->row_array();
 		$this->load->view('backend/index',$data);
     }
 
