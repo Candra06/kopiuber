@@ -21,9 +21,10 @@
             <li class="sub-item"><a href="<?= base_url('pengurus') ?>" class="sub-link <?= (($this->uri->segment(1) == 'pengurus' ? 'active' : ''))?>">Pengurus</a></li>
             <li class="sub-item"><a href="<?= base_url('aset') ?>" class="sub-link <?= (($this->uri->segment(1) == 'aset' ? 'active' : ''))?>">Data Aset</a></li>
             <li class="sub-item"><a href="<?= base_url('jabatan') ?>" class="sub-link <?= (($this->uri->segment(1) == 'jabatan' ? 'active' : ''))?>">Data Jabatan</a></li>
-            <li class="sub-item"><a href="<?= base_url('klasifikasi_akun') ?>" class="sub-link <?= (($this->uri->segment(1) == 'klasifikasi_akun' ? 'active' : ''))?>">Klasifikasi Akun</a></li>
-            <li class="sub-item"><a href="<?= base_url('sub_klasifikasi_akun') ?>" class="sub-link <?= (($this->uri->segment(1) == 'sub_klasifikasi_akun' ? 'active' : ''))?>">Sub Klasifikasi Akun</a></li>
-            <li class="sub-item"><a href="<?= base_url('akun') ?>" class="sub-link <?= (($this->uri->segment(1) == 'akun' ? 'active' : ''))?>">Akun</a></li>
+            <li class="sub-item"><a href="<?= base_url('akun/index/akun') ?>" class="sub-link <?= (($this->uri->segment(3) == 'akun' ? 'active' : ''))?>">Akun</a></li>
+            <li class="sub-item"><a href="<?= base_url('akun/index/klasifikasi_akun') ?>" class="sub-link <?= (($this->uri->segment(3) == 'klasifikasi_akun' ? 'active' : ''))?>">Klasifikasi Akun</a></li>
+            <li class="sub-item"><a href="<?= base_url('akun/index/sub_klasifikasi_akun') ?>" class="sub-link <?= (($this->uri->segment(3) == 'sub_klasifikasi_akun' ? 'active' : ''))?>">Sub Klasifikasi Akun</a></li>
+            
           </ul>
         </li><!-- br-menu-item -->
 
