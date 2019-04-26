@@ -1,4 +1,4 @@
- <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,6 +28,7 @@
 
     <title><?= $title ?></title>
 
+    
     <!-- vendor css -->
     <link href="<?= base_url() ?>asset/app/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>asset/app/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
@@ -39,8 +40,37 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>asset/app/css/bracket.css">
-    <link rel="stylesheet" href="<?= base_url() ?>asset/app/css/bracket.dark.css">
+    <link rel="stylesheet" href="<?= base_url() ?>asset/app/css/bracket.simple-white.css">
 
+  </head>
+  <body>
+
+      <?php
+      include str_replace("system", "application/views/mitra/", BASEPATH)."/layout/sidebar.php"; 
+      include str_replace("system", "application/views/mitra/", BASEPATH)."/layout/head.php";
+        
+      ?>
+     <div class="br-mainpanel">
+     
+
+      <?php
+        include str_replace("system", "application/views/mitra/", BASEPATH)."/layout/content.php";
+      ?>
+
+      <footer class="br-footer">
+        <div class="footer-left">
+          <div class="mg-b-2">Copyright &copy; 2017. Bracket Plus. All Rights Reserved.</div>
+          <div>Attentively and carefully made by ThemePixels.</div>
+        </div>
+        <div class="footer-right d-flex align-items-center">
+          <span class="tx-uppercase mg-r-10">Share:</span>
+          <a target="_blank" class="pd-x-5" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//themepixels.me/bracketplus/intro"><i class="fab fa-facebook tx-20"></i></a>
+          <a target="_blank" class="pd-x-5" href="https://twitter.com/home?status=Bracket%20Plus,%20your%20best%20choice%20for%20premium%20quality%20admin%20template%20from%20Bootstrap.%20Get%20it%20now%20at%20http%3A//themepixels.me/bracketplus/intro"><i class="fab fa-twitter tx-20"></i></a>
+        </div>
+      </footer>
+    </div><!-- br-mainpanel -->
+
+    
     <script src="<?= base_url() ?>asset/app/lib/jquery/jquery.min.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/jquery-ui/ui/widgets/datepicker.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -53,23 +83,20 @@
     <script src="<?= base_url() ?>asset/app/lib/jquery.flot/jquery.flot.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/jquery.flot/jquery.flot.resize.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="<?= base_url() ?>asset/app/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <script src="<?= base_url() ?>asset/app/lib/echarts/echarts.min.js"></script>
-    <script src="<?= base_url() ?>asset/app/lib/select2/js/select2.full.min.js"></script>
+    
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyAq8o5-8Y5pudbJMJtDFzb8aHiWJufa5fg"></script>
-    <script src="<?= base_url() ?>asset/app/lib/gmaps/gmaps.min.js"></script>
+    
     <script src="<?= base_url() ?>asset/app/lib/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
-    <script src="<?= base_url() ?>asset/app/lib/select2/js/select2.min.js"></script>
+    <!-- <script src="<?= base_url() ?>asset/app/lib/select2/js/select2.min.js"></script> -->
     
 
     <script src="<?= base_url() ?>asset/app/js/bracket.js"></script>
     <script src="<?= base_url() ?>asset/app/lib/highlightjs/highlight.pack.min.js"></script>
-    <script src="<?= base_url() ?>asset/app/js/map.shiftworker.js"></script>
     <script src="<?= base_url() ?>asset/app/js/ResizeSensor.js"></script>
-    <script src="<?= base_url() ?>asset/app/js/dashboard.dark.js"></script>
+    <script src="<?= base_url() ?>asset/app/js/dashboard.simple-white.js"></script>
 
     <script>
       $(function(){
@@ -88,33 +115,6 @@
 
       });
     </script>
-  </head>
-
-  <body>
-
-      <?php
-        include str_replace("system", "application/views/teknisi/", BASEPATH)."/layout/head.php";
-        include str_replace("system", "application/views/teknisi/", BASEPATH)."/layout/sidebar.php"; 
-      ?>
-     <div class="br-mainpanel">
-     
-
-      <?php
-        include str_replace("system", "application/views/teknisi/", BASEPATH)."/layout/content.php";
-      ?>
-
-      <footer class="br-footer">
-        <div class="footer-left">
-          <div class="mg-b-2">Copyright &copy; 2017. Bracket Plus. All Rights Reserved.</div>
-          <div>Attentively and carefully made by ThemePixels.</div>
-        </div>
-        <div class="footer-right d-flex align-items-center">
-          <span class="tx-uppercase mg-r-10">Share:</span>
-          <a target="_blank" class="pd-x-5" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//themepixels.me/bracketplus/intro"><i class="fab fa-facebook tx-20"></i></a>
-          <a target="_blank" class="pd-x-5" href="https://twitter.com/home?status=Bracket%20Plus,%20your%20best%20choice%20for%20premium%20quality%20admin%20template%20from%20Bootstrap.%20Get%20it%20now%20at%20http%3A//themepixels.me/bracketplus/intro"><i class="fab fa-twitter tx-20"></i></a>
-        </div>
-      </footer>
-    </div><!-- br-mainpanel -->
 </body>
 
 </html>

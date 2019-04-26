@@ -1,3 +1,3 @@
 <?php
-include str_replace("system", "application/views/teknisi/content", BASEPATH)."/$content.php";
+include str_replace("system", "application/views/mitra/content", BASEPATH)."/$content.php";
 ?>

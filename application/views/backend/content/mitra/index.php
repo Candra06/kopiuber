@@ -5,7 +5,7 @@
             <h4><?= $header ?></h4>
           </div>
           <div style="width: 15%; float: right;">
-            <a href="<?= base_url('teknisi')?>/add" style="width: 120px; margin-right:5px;" class="btn btn-primary btn-block mg-b-5"><i class="fa fa fa-plus mg-r-10"> </i>Add Data</a>   
+            <a href="<?= base_url('mitra')?>/add" style="width: 120px; margin-right:5px;" class="btn btn-primary btn-block mg-b-5"><i class="fa fa fa-plus mg-r-10"> </i>Add Data</a>   
           </div>  
       </div><!-- d-flex -->
 
@@ -27,7 +27,7 @@
                 <tr>
                   <th class="wd-10p">Kode Teknisi</th>
                   <th class="wd-15p">Nama</th>
-                  <th class="wd-15p">No HP</th>
+                  <th class="wd-15p">Status</th>
                   <th class="wd-10p">Aksi</th>
                 </tr>
               </thead>
@@ -36,12 +36,16 @@
                   foreach ($data as $d){
                 ?>
                 <tr>
-                  <td><?= $d['kd_user']?></td>
-                  <td><?= $d['nama']?></td>
-                  <td><?= $d['no_hp']?></td>
+                  <td><?= $d['kd_mitra']?></td>
+                  <td><?= $d['nama_mitra']?></td>
+                  <?php if ($d['status'] == 1 ){?>
+                    <td>Aktif</td>
+                  <?php } else {?>
+                    <td>Tidak Aktif</td>
+                  <?php }?>
                   <td>
-                    <a href="<?= base_url().$this->uri->segment(1)."/edit/$d[kd_user]"?>"><button type="" class="btn btn-primary btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-pencil-alt"></i></div></button></a> 
-                    <a href="<?= base_url().$this->uri->segment(1)."/delete/$d[kd_user]"?>"><button type="" class="btn btn-danger btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-trash"></i></div></button></a>
+                    <a href="<?= base_url().$this->uri->segment(1)."/edit/$d[kd_mitra]"?>"><button type="" class="btn btn-primary btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-pencil-alt"></i></div></button></a> 
+                    <a href="<?= base_url().$this->uri->segment(1)."/delete/$d[kd_mitra]"?>"><button type="" class="btn btn-danger btn-icon mg-r-5 mg-b-10"><div><i class="fa fa-trash"></i></div></button></a>
                   </td>
                 </tr>
                 <?php } ?>

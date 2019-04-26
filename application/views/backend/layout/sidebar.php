@@ -63,7 +63,7 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="<?= base_url('anggota') ?>" class="br-menu-link <?= (($this->uri->segment(1) == 'teknisi' ? 'active' : ''))?>">
+          <a href="<?= base_url('Mitra') ?>" class="br-menu-link <?= (($this->uri->segment(1) == 'mitra' ? 'active' : ''))?>">
             <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
             <span class="menu-item-label">Mitra</span>
           </a><!-- br-menu-link -->

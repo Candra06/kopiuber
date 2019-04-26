@@ -72,7 +72,7 @@ class App extends CI_Controller {
 			$_SESSION['username'] = $cekData['username'];
 			$_SESSION['nama'] = $cekData['nama'];
 			$_SESSION['level'] = $cekData['level'];
-			redirect(base_url('dashboard2'));
+			redirect(base_url('home_mitra'));
 		}elseif ($cekData['level'] == 5) {
 			$_SESSION['kd'] = $cekData['kd_user'];
 			$_SESSION['username'] = $cekData['username'];

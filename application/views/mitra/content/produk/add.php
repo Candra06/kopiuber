@@ -1,5 +1,5 @@
       
-      <div class="br-pagetitle">
+      <div class="br-pagetitle" >
       <i class="icon ion-ios-home-outline tx-70 lh-0"></i>
         <div class="" style="width: 90%;">
           <h4><?= $header ?></h4>
@@ -8,39 +8,52 @@
 
       <div class="br-pagebody">
       <div class="br-section-wrapper">
-          <h6 class="br-section-label">Input Data Teknisi</h6>
-          <p class="br-section-text">A form with a label on top of each form control.</p>
+          <h6 class="br-section-label">Input Data Pengurus</h6>
+          
 
           <div class="form-layout form-layout-1">
             <form action="" method="post" enctype="multipart/form-data">
             <div class="row mg-b-25">
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Kode Teknisi: <span class="tx-danger">*</span></label>
-                  <input class="form-control form-control-dark" type="text" name="kd_user" value="<?php  if( $data == null){ echo $kode_user; } else { echo Input_helper::postOrOr('kd_user', $data['kd_user']); } ?>" placeholder="Kode Teknisi" required disabled>
-                  <!-- <input class="form-control form-control-dark" type="hidden" name="kd_user" value="<?= Input_helper::postOrOr('kd_user', $data['kd_user']) ?>" placeholder="Kode Teknisi" disabled> -->
+                  <label class="form-control-label">Pilih Anggota <span class="tx-danger">*</span></label>
+                  <select class="form-control form-control-dark select-2" id="anggota" name="anggota" placeholder="Pilih Anggota" >
+                    <option value="">Pilih Anggota</option>
+                    <?php foreach ($data_anggota as $da) {?>
+                    <option value="<?= $da['kd_anggota'];?>"><?= $da['nama_anggota']?></option>
+                    <?php } ?>
+                    
+                  </select>
                 </div>
               </div><!-- col-4 -->
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Nama Lengkap: <span class="tx-danger">*</span></label>
-                  <input class="form-control form-control-dark" type="text" name="nama" value="<?= Input_helper::postOrOr('nama', $data['nama']) ?>" placeholder="Masukkan Nama Lengkap" required>
+                  <label class="form-control-label">Jabatan <span class="tx-danger">*</span></label>
+                  <select class="form-control form-control-dark select-2" id="jabatan" name="jabatan" placeholder="Pilih Anggota">
+                    <option value="">Pilih Jabatan</option>
+                    <?php foreach ($data_jabatan as $dj) {?>
+                    <option value="<?= $dj['kd_jabatan'];?>"><?= $dj['jabatan']?></option>
+                    <?php } ?>
+                    
+                  </select>
                 </div>
               </div><!-- col-4 -->
               
 
-              <div class="col-lg-8">
+              <div class="col-lg-6">
                 <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Alamat: <span class="tx-danger">*</span></label>
-                  <input class="form-control form-control-dark" type="text" name="alamat" value="<?= Input_helper::postOrOr('alamat', $data['alamat']) ?>" placeholder="Masukkan Alamat" required>
+                  <label class="form-control-label">User Login <span class="tx-danger">*</span></label>
+                  <input class="form-control form-control-dark" type="text" name="email" placeholder="Masukkan User Login Pengurus" required>
                 </div>
               </div><!-- col-8 -->
-              <div class="col-lg-4">
+
+              <div class="col-lg-6">
                 <div class="form-group mg-b-10-force">
-                <label class="form-control-label">Nomor Telp: <span class="tx-danger">*</span></label>
-                  <input class="form-control form-control-dark" type="number" name="no_hp" value="<?= Input_helper::postOrOr('no_hp', $data['no_hp']) ?>" placeholder="Masukkan Masukkan No HP" required>
+                  <label class="form-control-label">Foto <span class="tx-danger">*</span></label>
+                  <input class="form-control form-control-dark" type="file" name="foto" required>
                 </div>
-              </div><!-- col-4 -->
+              </div><!-- col-8 -->
+              
             </div><!-- row -->
 
             <div class="form-layout-footer">
