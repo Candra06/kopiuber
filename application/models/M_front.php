@@ -42,6 +42,18 @@ class M_front extends CI_Model{
         $data;
     }
 
+    public function kategori(){
+        $q = $this->db->query("SELECT * FROM kategori_usaha");
+        return $q->result_array();
+        
+    }
+
+    public function produk(){
+        $q = "SELECT v.*, m.* FROM visi v, misi m WHERE m.kd_visi = v.kd_visi";
+        $data = $q->result_array();
+        $data;
+    }
+
     public function notifikasi()
     {
         $q = $this->db->query("SELECT * FROM anggota WHERE status_keanggotaan = '2'");

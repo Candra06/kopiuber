@@ -43,6 +43,7 @@ class Home extends CI_Controller {
 		$data['title'] = "Kopi Uber";
 		$data['content'] = "home/index";
 		$data['pengurus'] = $this->M_front->pengurus();
+		$data['kategori'] = $this->M_front->kategori();
 		$this->load->view('frontend/index',$data);
 		
 	}

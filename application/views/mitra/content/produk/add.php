@@ -8,48 +8,61 @@
 
       <div class="br-pagebody">
       <div class="br-section-wrapper">
-          <h6 class="br-section-label">Input Data Pengurus</h6>
+          <h6 class="br-section-label">Input Data Barang</h6>
           
 
           <div class="form-layout form-layout-1">
             <form action="" method="post" enctype="multipart/form-data">
             <div class="row mg-b-25">
               <div class="col-lg-6">
-                <div class="form-group">
-                  <label class="form-control-label">Pilih Anggota <span class="tx-danger">*</span></label>
-                  <select class="form-control form-control-dark select-2" id="anggota" name="anggota" placeholder="Pilih Anggota" >
-                    <option value="">Pilih Anggota</option>
-                    <?php foreach ($data_anggota as $da) {?>
-                    <option value="<?= $da['kd_anggota'];?>"><?= $da['nama_anggota']?></option>
-                    <?php } ?>
-                    
-                  </select>
+                <div class="form-group mg-b-10-force">
+                  <label class="form-control-label">Nama Produk <span class="tx-danger">*</span></label>
+                  <input class="form-control form-control-dark" type="text" name="nama_produk" placeholder="Masukkan Nama Produk" required>
                 </div>
-              </div><!-- col-4 -->
+              </div><!-- col-8 -->
+              
               <div class="col-lg-6">
                 <div class="form-group">
-                  <label class="form-control-label">Jabatan <span class="tx-danger">*</span></label>
-                  <select class="form-control form-control-dark select-2" id="jabatan" name="jabatan" placeholder="Pilih Anggota">
-                    <option value="">Pilih Jabatan</option>
-                    <?php foreach ($data_jabatan as $dj) {?>
-                    <option value="<?= $dj['kd_jabatan'];?>"><?= $dj['jabatan']?></option>
+                  <label class="form-control-label">Pilih Kategori <span class="tx-danger">*</span></label>
+                  <select class="form-control form-control-dark select-2" id="kategori" name="kategori" placeholder="Pilih Kategori" >
+                    <option value="">Pilih Kategori</option>
+                    <?php foreach ($kategori as $kt) {?>
+                    <option value="<?= $kt['kd_kategori'];?>"><?= $kt['kategori']?></option>
                     <?php } ?>
                     
                   </select>
                 </div>
               </div><!-- col-4 -->
-              
 
               <div class="col-lg-6">
                 <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">User Login <span class="tx-danger">*</span></label>
-                  <input class="form-control form-control-dark" type="text" name="email" placeholder="Masukkan User Login Pengurus" required>
+                  <label class="form-control-label">Harga <span class="tx-danger">*</span></label>
+                  <input class="form-control form-control-dark" type="number" name="harga" placeholder="Masukkan Harga" required>
                 </div>
               </div><!-- col-8 -->
 
               <div class="col-lg-6">
                 <div class="form-group mg-b-10-force">
-                  <label class="form-control-label">Foto <span class="tx-danger">*</span></label>
+                  <label class="form-control-label">Stok <span class="tx-danger">*</span></label>
+                  <input class="form-control form-control-dark" type="number" name="stok" placeholder="Masukkan Stok" required>
+                </div>
+              </div><!-- col-8 -->
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="form-control-label">Status Barang <span class="tx-danger">*</span></label>
+                  <select class="form-control form-control-dark select-2" id="status" name="status" placeholder="Pilih Status Barang">
+                    <option value="">Pilih Status Barang</option>
+                    <option value="1">Ready</option>
+                    <option value="2">Pre Order</option>
+                    <option value="3">Sold Out</option>
+                  </select>
+                </div>
+              </div><!-- col-4 -->
+
+              <div class="col-lg-6">
+                <div class="form-group mg-b-10-force">
+                  <label class="form-control-label">Foto Produk <span class="tx-danger">*</span></label>
                   <input class="form-control form-control-dark" type="file" name="foto" required>
                 </div>
               </div><!-- col-8 -->

@@ -21,8 +21,9 @@
               </div>";
             }
           ?>
-      <div class="table-wrapper responsive">
-            <table id="datatable1" class="table responsive display">
+      <div class="br-section-wrapper">
+      <div class="table-wrapper">
+            <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
                   <th class="wd-15p">Nama Usaha</th>
@@ -50,5 +51,6 @@
               </tbody>
             </table>
           </div><!-- table-wrapper -->
+          </div>
       </div><!-- br-pagebody -->
      

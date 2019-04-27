@@ -32,16 +32,20 @@
       <div class="container">
 
         <header class="section-header">
-          <h3 class="section-title">Prodak Kami</h3>
+          <h3 class="section-title">Produk Kami</h3>
         </header>
 
         <div class="row">
           <div class="col-lg-12">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Digital</li>
-              <li data-filter=".filter-card">Sembako</li>
-              <li data-filter=".filter-web">Kuliner</li>
+              <?php foreach($kategori as $k){?>
+                <?php if ($k['kategori'] == 'Digital') { ?>
+                   <li data-filter=".filter-app"><?= $k['kategori']?></li>
+                <?php } else { ?>
+                   <li data-filter=".filter-card"><?= $k['kategori']?></li>
+                <?php } ?>
+              <?php }?>
             </ul>
           </div>
         </div>
@@ -52,11 +56,10 @@
             <div class="portfolio-wrap">
               <img src="<?= base_url() ?>asset/frontend/img/portfolio/app1.jpg" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4><a href="#">Pulsa</a></h4>
+                <h4><a href="#">Pulsa Prabayar</a></h4>
                 <p>Jual Pulsa all Operator</p>
                 <div>
-                  <a href="<?= base_url() ?>asset/frontend/img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                  <a href="" data-toggle="modal" data-target="#modal_pulsa" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
                 </div>
               </div>
             </div>
@@ -403,3 +406,44 @@
       </div>
     </section><!-- #testimonials -->
   </main>
+
+  <!-- Modal -->
+<div class="modal fade" id="modal_pulsa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pulsa Prabayar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <!-- <img src="<?= base_url() ?>asset/upload/barang/pulsa.jpg" style="width: 150px;height:190px;float:center;" class="img-fluid" alt=""> -->
+          <form>
+            <div class="form-group">
+              <label>Pilih Nominal</label>
+              <select name="nominal" class="form-control">
+                <option value="">Pilih Nominal</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Pilih Operator</label>
+              <select name="operator" class="form-control">
+                <option value="">Pilih Operator</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>

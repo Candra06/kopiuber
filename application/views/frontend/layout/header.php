@@ -13,7 +13,7 @@
           <li><a href="#portfolio">Produk</a></li>
           <li><a href="#about">Tentang</a></li>
           <li><a href="#why-us">Profil</a></li>
-          <li><a href="#testimonials">Team</a></li>
+          <li><a href="#testimonials">Tim</a></li>
           <li><a href="#contact">Contact Us</a></li>
           <li><a href="<?= base_url();?>home/registrasi">Bergabung</a></li>
           <li><a href="<?= base_url();?>App">Masuk</a></li>

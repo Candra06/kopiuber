@@ -11,14 +11,14 @@
         </li><!-- br-menu-item -->  
 
         <li class="br-menu-item">
-          <a href="<?= base_url('Usaha') ?>" class="br-menu-link <?= (($this->uri->segment(1) == 'usaha' ? 'active' : ''))?>">
+          <a href="<?= base_url('Usaha') ?>" class="br-menu-link <?= (($this->uri->segment(1) == 'Usaha' ? 'active' : ''))?>">
             <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
             <span class="menu-item-label">Lapak</span>
           </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-          <a href="<?= base_url('Mitra') ?>" class="br-menu-link <?= (($this->uri->segment(1) == 'mitra' ? 'active' : ''))?>">
+          <a href="<?= base_url('Produk') ?>" class="br-menu-link <?= (($this->uri->segment(1) == 'Produk' ? 'active' : ''))?>">
             <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
             <span class="menu-item-label">Barang</span>
           </a><!-- br-menu-link -->

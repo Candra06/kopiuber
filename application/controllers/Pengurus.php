@@ -60,7 +60,7 @@ class Pengurus extends CI_Controller {
 
         $this->upload->initialize($config);
         
-        if ($this->upload->do_upload('foto')){
+        if ($this->upload->do_upload('foto_produk')){
             $gbr = $this->upload->data();
             //Compress Image
             $config['image_library']='gd2';
