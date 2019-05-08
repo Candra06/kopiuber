@@ -99,11 +99,11 @@ class Produk extends CI_Controller {
 
     public function edit($kode){       
         $data['title'] = "Prima Comp";
-        $data['header'] = "Ubah Data Pelanggan";
-        $data['content'] = "usaha/add";
+        $data['header'] = "Ubah Data Produk";
+        $data['content'] = "produk/add";
         $data['notif'] = $this->M_front->notifikasi();
-        $data['data'] = $this->db->get_where("usaha", ['kd_usaha' => $kode])->row_array();
-		$this->load->view('backend/index',$data);
+        $data['data'] = $this->db->get_where("produk", ['kd_produk' => $kode])->row_array();
+		$this->load->view('mitra/index',$data);
     }
 
     public function update($kode){

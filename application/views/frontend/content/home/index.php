@@ -107,20 +107,6 @@
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <img src="<?= base_url() ?>asset/frontend/img/portfolio/web2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Aneka minuman dan Jus</a></h4>
-                <p>Web</p>
-                <div>
-                  <a href="<?= base_url() ?>asset/frontend/img/portfolio/web2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
             <div class="portfolio-wrap">
               <img src="<?= base_url() ?>asset/frontend/img/portfolio/app3.jpg" class="img-fluid" alt="">
@@ -129,34 +115,6 @@
                 <p>App</p>
                 <div>
                   <a href="<?= base_url() ?>asset/frontend/img/portfolio/app3.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card" data-wow-delay="0.1s">
-            <div class="portfolio-wrap">
-              <img src="<?= base_url() ?>asset/frontend/img/portfolio/card3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Kebutuhan rumah tangga</a></h4>
-                <p>Card</p>
-                <div>
-                  <a href="<?= base_url() ?>asset/frontend/img/portfolio/card3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
-                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.2s">
-            <div class="portfolio-wrap">
-              <img src="<?= base_url() ?>asset/frontend/img/portfolio/web1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="#">Kuliner harga Mahasiswa</a></h4>
-                <p>kuliner</p>
-                <div>
-                  <a href="<?= base_url() ?>asset/frontend/img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
                   <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
                 </div>
               </div>
@@ -408,42 +366,76 @@
   </main>
 
   <!-- Modal -->
-<div class="modal fade" id="modal_pulsa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pulsa Prabayar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <!-- <img src="<?= base_url() ?>asset/upload/barang/pulsa.jpg" style="width: 150px;height:190px;float:center;" class="img-fluid" alt=""> -->
-          <form>
-            <div class="form-group">
-              <label>Pilih Nominal</label>
-              <select name="nominal" class="form-control">
-                <option value="">Pilih Nominal</option>
-              </select>
+  <div class="modal fade" id="modal_pulsa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pulsa Prabayar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form action="<?= base_url("home/transaksi_pulsa")?>" method="post">
+                <?php 
+                foreach($saldo as $sd){
+                  if ($sd['stok'] <= 50000 or $sd['status'] == 3) { 
+                  ?>
+                  <div class="form-group" id="pesan">
+                    <label>Maaf saat ini Layanan Pulsa Prabayar tidak dapat melakukan proses transaksi</label>
+                  </div>
+               <?php } ?>
+                  <div class="form-group">
+                    <label>Pilih Operator</label>
+                    <select name="operator" class="form-control" onchange="get_nominal(this.options[this.selectedIndex].value)">
+                      <option value="">Pilih Operator</option>
+                      <?php foreach($operator as $o ){?>
+                      <option value="<?= $o['id_operator']; ?>"><?= $o['operator']; ?></option>
+                      <?php } 
+                      }?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Pilih Nominal</label>
+                    <select name="nominal" id="nominal" class="form-control">
+                      <option value="">Pilih Nominal</option>
+                    </select>
+                  </div>
+              
+                <div class="form-group">
+                  <label for="">Nomor HP</label>
+                  <input type="text" class="form-control" name="no_hp" placeholder="Nomor HP">
+                </div>
+                <div class="form-group">
+                  <label for="">Kode Anggota</label>
+                  <input type="text" class="form-control" name="anggota" placeholder="Kode Anggota">
+                </div>
+              
             </div>
-            <div class="form-group">
-              <label>Pilih Operator</label>
-              <select name="operator" class="form-control">
-                <option value="">Pilih Operator</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="">Email</label>
-              <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
-            </div>
-          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary" id="proses">Checkout</button>
+          </div>
+          </form> 
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-primary">Checkout</button>
-      </div>
     </div>
-  </div>
-</div>
+
+    <script type="text/javascript">
+      function get_nominal(select_item) {
+          $.ajax({
+            type: 'post',
+            url: '<?= base_url()."home/get_nominal"?>',
+            data: {
+              get_option:select_item
+            },success: function(response) {
+              document.getElementById("nominal").innerHTML = response;
+            },error: function(XMLHttpRequest, textStatus, errorThrown){
+              alert("Status: " + textStatus); 
+              alert("Error: " + errorThrown);
+            }
+          })
+        }
+    </script>

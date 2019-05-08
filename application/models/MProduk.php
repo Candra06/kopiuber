@@ -18,10 +18,6 @@ class MProduk extends CI_Model{
         return $ada;
     }
 
-    public function insert_user($user){
-        $this->db->insert("user", $user);
-    }
-
     public function updateData($array, $kode){
         $this->db->update("produk", $array, ['kd_produk' => $kode]);
     }

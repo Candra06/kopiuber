@@ -125,6 +125,31 @@ class M_front extends CI_Model{
     $this->db->update("user", $array1, ['kd_user' => $kode]);
    }
 
+   public function get_nominal($nm)
+   {
+    $q = $this->db->query("SELECT * FROM pulsa WHERE operator='$nm'");
+    return $q->result_array();
+   }
+
+   public function get_operator(){
+       $q = $this->db->query("SELECT * FROM operator");
+       return $q->result_array();
+   }
+   
+   public function insert_transaksi($array){
+    $this->db->insert("transaksi_pulsa", $array);
+    }
+
+    public function proses_transaksi($stok,$kode,$array,$transaksi){
+        $this->db->update("produk", $stok, ['kd_produk' => $kode]);
+        $this->db->update("transaksi_pulsa", $array, ['kd_transaksi' => $transaksi]);
+    }
+
+    public function get_saldo(){
+        $q = $this->db->query("SELECT stok, status FROM produk WHERE nama_produk LIKE '%Pulsa%'");
+        return $q->result_array();
+    }
+
    
 }
 ?>
